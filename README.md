@@ -1,6 +1,6 @@
 # Building a SOC Home Lab: Splunk, Sysmon, and Active Directory
 
-This project documents the process of building a small but realistic Security Operations Center (SOC) home lab from scratch, entirely on VirtualBox. The goal was simple: create an environment that behaves like a miniature enterprise network, complete with its own domain, endpoint telemetry, and a centralized log-collection platform, so that I could practice the same skills a SOC analyst uses on the job — collecting logs, correlating events, and investigating activity across a Windows environment.
+This project documents the process of building a small but realistic Security Operations Center (SOC) home lab from scratch, entirely on VirtualBox. The goal was simple: create an environment that behaves like a miniature enterprise network, complete with its own domain, endpoint telemetry, and a centralized log collection platform, so that I could practice the same skills a SOC analyst uses on the job — collecting logs, correlating events, and investigating activity across a Windows environment.
 
 The lab is built around three virtual machines:
 
