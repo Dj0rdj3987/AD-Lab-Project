@@ -1,6 +1,6 @@
 # Building a SOC Home Lab: Splunk, Sysmon, and Active Directory
 
-This project documents building an Active Directory home lab from scratch, entirely on VirtualBox, with one goal driving the whole design: learn Active Directory and Splunk together, by actually attacking my own domain and watching what that looks like in the telemetry. The lab configures a real domain, joins a user's machine to it, and collects that machine's telemetry in Splunk — and then a Kali Linux box attacks it, starting with a brute-force attack against the domain accounts, with Atomic Red Team runs planned next to cover a broader set of MITRE ATT&CK techniques. The point isn't just to get the attack to work; it's to go find it afterward in Splunk and understand exactly what it looked like from the defender's side.
+This project documents building an Active Directory home lab from scratch, entirely on VirtualBox, with one goal driving the whole design: learn Active Directory and Splunk together, by actually attacking my own domain and watching what that looks like in the telemetry. The lab configures a real domain, joins a user's machine to it, and collects that machine's telemetry in Splunk ,and then a Kali Linux box attacks it, starting with a brute-force attack against the domain accounts, with Atomic Red Team runs planned next to cover a broader set of MITRE ATT&CK techniques. The point isn't just to get the attack to work, it's to go find it afterward in Splunk and understand exactly how telemetry looks from the SOC side.
 
 The lab is built around four virtual machines:
 
@@ -15,7 +15,7 @@ The high-level architecture of the lab is shown below.
 
 ## Why this project
 
-I'm transitioning from a background in industrial instrumentation and automation into cybersecurity, with SOC Analyst (L1/L2) roles as my target. Reading about Active Directory or detection engineering only gets you so far — I wanted a lab where I'd actually built the domain myself, actually attacked it myself, and could watch the whole pipeline react: endpoint → Sysmon → forwarder → indexer → search. Attacking my own environment with a brute-force run and, later, Atomic Red Team is what makes the Splunk side of this concrete — there's a real event to go find, not just theory. This repository is both my own build log and, I hope, something useful for anyone else putting together a similar lab.
+I'm transitioning from a background in industrial instrumentation and automation into cybersecurity, with SOC Analyst L1 role as my target. Reading about Active Directory or detection engineering only gets you so far , I wanted a lab where I'd actually built the domain myself, actually attacked it myself, and could watch it. Attacking my own environment with a brute-force run and, later, Atomic Red Team is what makes the Splunk side of this concrete. This repository is both my own build log and, I hope, something useful for anyone else putting together a similar lab. Lab design inspired by MyDfir.
 
 ## How this documentation is organized
 
@@ -45,7 +45,7 @@ Each part below covers one stage of the build, in the order I actually did the w
 8. **[Part 8 — Joining the Target Machine to the Domain](08-domain-join.md)**
    Connecting the Windows target VM to the new domain, including the DNS fix needed for the machine to actually find the domain controller, and logging in with a domain account for the first time.
 
-Parts 1–8 cover getting the SIEM, the target machine, and the domain up and talking to each other — the defensive side of the lab. The Kali VM comes into play in the next phase: a brute-force attack against the domain's user accounts, followed by Atomic Red Team runs to cover a broader set of MITRE ATT&CK techniques, with the telemetry from each checked against what actually lands in Splunk. I'll add those as further parts once that work is documented.
+Parts 1–8 cover getting the SIEM, the target machine, and the domain up and talking to each other  the defensive side of the lab. The Kali VM comes into play in the next phase: a brute-force attack against the domain's user accounts, followed by Atomic Red Team runs to cover a broader set of MITRE ATT&CK techniques, with the telemetry from each checked against what actually lands in Splunk. I'll add those as further parts once that work is documented.
 
 ## A note on the architecture diagram
 
