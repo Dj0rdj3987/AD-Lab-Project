@@ -15,7 +15,7 @@ The high-level architecture of the lab is shown below.
 
 ## Why this project
 
-I'm transitioning from a background in industrial instrumentation and automation into cybersecurity, with SOC Analyst L1 role as my target. Reading about Active Directory or detection engineering only gets you so far , I wanted a lab where I'd actually built the domain myself, actually attacked it myself, and could watch it. Attacking my own environment with a brute-force run and, later, Atomic Red Team is what makes the Splunk side of this concrete. This repository is both my own build log and, I hope, something useful for anyone else putting together a similar lab. Lab design inspired by MyDfir.
+I'm transitioning from a background in industrial instrumentation and automation into cybersecurity, with SOC Analyst L1 role as my target. Reading about Active Directory or detection engineering only gets you so far , I wanted a lab where I'd actually built the domain myself, actually attacked it myself, and could watch it. Attacking my own environment with a brute-force run and, later, Atomic Red Team is what makes the Splunk side of this concrete. This repository is both my own build log and, I hope, something useful for anyone else putting together a similar lab. Lab design inspired by MyDFIR.
 
 ## How this documentation is organized
 
