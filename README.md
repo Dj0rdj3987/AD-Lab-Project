@@ -47,10 +47,6 @@ Each part below covers one stage of the build, in the order I actually did the w
 
 Parts 1–8 cover getting the SIEM, the target machine, and the domain up and talking to each other  the defensive side of the lab. The Kali VM comes into play in the next phase: a brute-force attack against the domain's user accounts, followed by Atomic Red Team runs to cover a broader set of MITRE ATT&CK techniques, with the telemetry from each checked against what actually lands in Splunk. I'll add those as further parts once that work is documented.
 
-## A note on the architecture diagram
-
-Every step below is illustrated with the actual screenshot taken at the time, already sitting in each part's `images/` folder and ready to publish. The one exception is the architecture diagram referenced at the top of this page (`images/00-lab-architecture-diagram.png`) — that's a separate draw.io export rather than a screenshot, so I'll need to drop that file in myself before publishing.
-
 ## Environment
 
 - **Hypervisor:** Oracle VirtualBox
