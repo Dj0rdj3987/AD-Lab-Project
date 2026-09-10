@@ -4,10 +4,10 @@ This project documents building an Active Directory home lab from scratch, entir
 
 The lab is built around four virtual machines:
 
-- **An Ubuntu server running Splunk Enterprise**, which acts as the central log-collection and analysis platform (the SIEM).
-- **A Windows 10 target machine**, which represents a typical end-user workstation, equipped with Sysmon and the Splunk Universal Forwarder so that its activity is captured and shipped to Splunk in near real time.
-- **A Windows Server machine**, promoted to a Domain Controller, which provides the Active Directory environment — the organizational units, users, and domain that the target machine ultimately joins.
-- **A Kali Linux machine**, playing the attacker — running a brute-force attack against the domain's user accounts, with Atomic Red Team runs planned next, so I can see what each technique actually looks like in Splunk.
+- **An Ubuntu server running Splunk Enterprise**, which acts as the central log collection and analysis platform (the SIEM).
+- **A Windows 10 target machine**, which represents a typical end user workstation, equipped with Sysmon and the Splunk Universal Forwarder so that its activity is captured and shipped to Splunk in near real time.
+- **A Windows Server machine**, promoted to a Domain Controller, which provides the Active Directory environment the organizational units, users, and domain that the target machine ultimately joins.
+- **A Kali Linux machine**, playing the attacker  running a brute force attack against the domain's user accounts, with Atomic Red Team runs planned next, so I can see what each technique actually looks like in Splunk.
 
 The high-level architecture of the lab is shown below.
 
