@@ -1,13 +1,13 @@
 # Building a SOC Home Lab: Splunk, Sysmon, and Active Directory
 
-This project documents the process of building a small but realistic Security Operations Center (SOC) home lab from scratch, entirely on VirtualBox. The goal was simple: create an environment that behaves like a miniature enterprise network, complete with its own domain, endpoint telemetry, and a centralized log-collection platform, so that I could practice the same skills a SOC analyst uses on the job — collecting logs, correlating events, and investigating activity across a Windows environment.
+This project documents building an Active Directory home lab from scratch, entirely on VirtualBox, with one goal driving the whole design: learn Active Directory and Splunk together, by actually attacking my own domain and watching what that looks like in the telemetry. The lab configures a real domain, joins a user's machine to it, and collects that machine's telemetry in Splunk — and then a Kali Linux box attacks it, starting with a brute-force attack against the domain accounts, with Atomic Red Team runs planned next to cover a broader set of MITRE ATT&CK techniques. The point isn't just to get the attack to work; it's to go find it afterward in Splunk and understand exactly what it looked like from the defender's side.
 
 The lab is built around four virtual machines:
 
 - **An Ubuntu server running Splunk Enterprise**, which acts as the central log-collection and analysis platform (the SIEM).
-- **A Windows target machine**, which represents a typical end-user workstation, equipped with Sysmon and the Splunk Universal Forwarder so that its activity is captured and shipped to Splunk in near real time.
+- **A Windows 10 target machine**, which represents a typical end-user workstation, equipped with Sysmon and the Splunk Universal Forwarder so that its activity is captured and shipped to Splunk in near real time.
 - **A Windows Server machine**, promoted to a Domain Controller, which provides the Active Directory environment — the organizational units, users, and domain that the target machine ultimately joins.
-- **A Kali Linux machine**, which sits alongside the other three and is where the attack side of the lab happens — generating the activity that Sysmon and Splunk are meant to catch.
+- **A Kali Linux machine**, playing the attacker — running a brute-force attack against the domain's user accounts, with Atomic Red Team runs planned next, so I can see what each technique actually looks like in Splunk.
 
 The high-level architecture of the lab is shown below.
 
@@ -15,7 +15,7 @@ The high-level architecture of the lab is shown below.
 
 ## Why this project
 
-I'm transitioning from a background in industrial instrumentation and automation into cybersecurity, with SOC Analyst (L1/L2) roles as my target. Reading about detection engineering and log analysis only gets you so far — I wanted a lab where I could actually generate telemetry, watch it land in Splunk, and get comfortable with the full pipeline: endpoint → forwarder → indexer → search. This repository is both my own build log and, I hope, something useful for anyone else putting together a similar lab.
+I'm transitioning from a background in industrial instrumentation and automation into cybersecurity, with SOC Analyst (L1/L2) roles as my target. Reading about Active Directory or detection engineering only gets you so far — I wanted a lab where I'd actually built the domain myself, actually attacked it myself, and could watch the whole pipeline react: endpoint → Sysmon → forwarder → indexer → search. Attacking my own environment with a brute-force run and, later, Atomic Red Team is what makes the Splunk side of this concrete — there's a real event to go find, not just theory. This repository is both my own build log and, I hope, something useful for anyone else putting together a similar lab.
 
 ## How this documentation is organized
 
@@ -45,7 +45,7 @@ Each part below covers one stage of the build, in the order I actually did the w
 8. **[Part 8 — Joining the Target Machine to the Domain](08-domain-join.md)**
    Connecting the Windows target VM to the new domain, including the DNS fix needed for the machine to actually find the domain controller, and logging in with a domain account for the first time.
 
-Parts 1–8 cover getting the SIEM, the target machine, and the domain up and talking to each other. The Kali VM comes into play in the next phase of this project — using it to generate activity in the environment and watching the detections show up in Splunk — which I'll add as further parts once that work is documented.
+Parts 1–8 cover getting the SIEM, the target machine, and the domain up and talking to each other — the defensive side of the lab. The Kali VM comes into play in the next phase: a brute-force attack against the domain's user accounts, followed by Atomic Red Team runs to cover a broader set of MITRE ATT&CK techniques, with the telemetry from each checked against what actually lands in Splunk. I'll add those as further parts once that work is documented.
 
 ## A note on the architecture diagram
 
@@ -56,7 +56,7 @@ Every step below is illustrated with the actual screenshot taken at the time, al
 - **Hypervisor:** Oracle VirtualBox
 - **SIEM / log platform:** Splunk Enterprise 10.4.3 (Ubuntu Server, `192.168.10.10`)
 - **Endpoint telemetry:** Sysmon v15.21 (Olaf Hartong's `sysmon-modular` configuration) + Splunk Universal Forwarder 10.4.3
-- **Target machine:** `target-PC`, `192.168.10.100`
+- **Target machine:** `target-PC`, Windows 10, `192.168.10.100`
 - **Directory services:** Windows Server 2022, Active Directory Domain Services (`ADDC01`, `192.168.10.7`)
 - **Domain:** `adlab.local`, with **IT** and **HR** organizational units
-- **Attack box:** Kali Linux, for the upcoming attack-simulation phase
+- **Attack box:** Kali Linux — brute-force attacks against AD accounts, then Atomic Red Team for broader MITRE ATT&CK coverage
