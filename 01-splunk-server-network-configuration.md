@@ -1,6 +1,6 @@
 # Part 1 — Network Configuration for the Splunk Server
 
-This is the first part of a home-lab build documented in this repository: a small Active Directory environment made up of three VirtualBox VMs — an Ubuntu server running Splunk Enterprise (the SIEM), a Windows target machine, and a Windows Server domain controller — wired together so the target's activity gets collected by Splunk and the whole thing lives inside a real AD domain. (See the [README](README.md) for the full architecture and a part-by-part index.)
+This is the first part of a home-lab build documented in this repository: a small Active Directory environment made up of four VirtualBox VMs — an Ubuntu server running Splunk Enterprise (the SIEM), a Windows target machine, a Windows Server domain controller, and a Kali Linux box for the attack side of things — wired together so the target's activity gets collected by Splunk and the whole thing lives inside a real AD domain. (See the [README](README.md) for the full architecture and a part-by-part index.)
 
 I built it in the order these parts are numbered, and that's the order this write-up follows too. The Splunk server comes first because everything else in the lab ends up depending on it: the Universal Forwarder on the target machine needs a fixed address to send data to, so the SIEM has to be up and sitting at a stable IP before anything else gets configured. That's what this first part is about.
 
