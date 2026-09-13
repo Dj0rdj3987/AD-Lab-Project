@@ -30,25 +30,22 @@ Each part below covers one stage of the build, in the order I actually did the w
 3. **[Part 3 — Preparing the Target Machine](03-target-machine-setup.md)**
    Renaming the Windows target VM and giving it a static IP address so it has a stable identity on the network.
 
-4. **[Part 4 — Installing the Splunk Universal Forwarder](04-splunk-universal-forwarder.md)**
-   Installing the Universal Forwarder on the target machine and pointing it at the Splunk server so the endpoint has an agent ready to ship data.
+4. **[Part 4 — Deploying Sysmon and the Splunk Universal Forwarder](04-sysmon-and-universal-forwarder.md)**
+   Installing the Universal Forwarder and Sysmon (with the Olaf Hartong configuration) on the target machine so its process, network, and system events are captured in detail.
 
-5. **[Part 5 — Deploying Sysmon](05-sysmon.md)**
-   Installing Sysmon with Olaf Hartong's `sysmon-modular` configuration so the machine's process, network, and file events are captured in detail.
-
-6. **[Part 6 — Configuring Splunk to Receive Endpoint Telemetry](06-splunk-data-ingestion.md)**
+5. **[Part 5 — Configuring Splunk to Receive Endpoint Telemetry](05-splunk-data-ingestion.md)**
    Writing `inputs.conf` on the forwarder, creating a dedicated `endpoint` index, and enabling forwarding and receiving on the Splunk server so the data actually flows in.
 
-7. **[Part 7 — Installing Windows Server and Active Directory Domain Services](07-windows-server-ad.md)**
+6. **[Part 6 — Installing Windows Server and Active Directory Domain Services](06-windows-server-ad.md)**
    Adding the AD DS role and promoting the server to a domain controller for a brand-new forest.
 
-8. **[Part 8 — Creating Organizational Units and Users](08-ad-users-and-ous.md)**
+7. **[Part 7 — Creating Organizational Units and Users](07-ad-users-and-ous.md)**
    Structuring the directory with IT and HR organizational units and populating them with users.
 
-9. **[Part 9 — Joining the Target Machine to the Domain](09-domain-join.md)**
+8. **[Part 8 — Joining the Target Machine to the Domain](08-domain-join.md)**
    Connecting the Windows target VM to the new domain, including the DNS fix needed for the machine to actually find the domain controller, and logging in with a domain account for the first time.
 
-Parts 1–9 cover getting the SIEM, the target machine, and the domain up and talking to each other  the defensive side of the lab. The Kali VM comes into play in the next phase: a brute-force attack against the domain's user accounts, followed by Atomic Red Team runs to cover a broader set of MITRE ATT&CK techniques, with the telemetry from each checked against what actually lands in Splunk. I'll add those as further parts once that work is documented.
+Parts 1–8 cover getting the SIEM, the target machine, and the domain up and talking to each other  the defensive side of the lab. The Kali VM comes into play in the next phase: a brute-force attack against the domain's user accounts, followed by Atomic Red Team runs to cover a broader set of MITRE ATT&CK techniques, with the telemetry from each checked against what actually lands in Splunk. I'll add those as further parts once that work is documented.
 
 ## Environment
 
