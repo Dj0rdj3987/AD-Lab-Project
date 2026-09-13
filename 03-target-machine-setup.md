@@ -2,10 +2,10 @@
 
 With Splunk running, the lab needed something to actually watch. That's the Windows 10
 VM: the ordinary workstation of this environment, the machine that joins the domain
-later and the one Kali eventually attacks.
+later and acts as target machine.
 
 Before any of that it needs a name I can recognise in Splunk and an address that
-doesn't move. Both matter — every event that reaches Splunk carries the hostname, and
+doesn't move. Both matter every event that reaches Splunk carries the hostname, and
 `DESKTOP-7K2J9F1` is a miserable thing to search for.
 
 ## Renaming the machine
@@ -39,7 +39,7 @@ From **Settings → Network & Internet → Status**, the way through to the adap
 
 ![The network Status page with Change adapter options](images/29-change-adapter-options.png)
 
-Right-click the Ethernet adapter → **Properties**, then select **Internet Protocol
+Right click the Ethernet adapter → **Properties**, then select **Internet Protocol
 Version 4 (TCP/IPv4)** and click **Properties** again.
 
 ![Ethernet Properties with Internet Protocol Version 4 selected](images/30-ethernet-properties-ipv4.png)
