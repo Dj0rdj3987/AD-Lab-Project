@@ -32,21 +32,25 @@ configuration you feed it. The community standard is Olaf Hartong's `sysmon-modu
 config, which is tuned to surface the events that matter for detection without
 drowning you in noise.
 
-I installed Sysmon itself first:
+First I downloaded Sysmon itself from Microsoft Sysinternals:
 
-![Installing Sysmon from an elevated prompt](images/35-sysmon-install.png)
+![Downloading Sysmon from Microsoft Sysinternals](images/35-sysmon-install.png)
 
-Then downloaded Olaf Hartong's configuration — the `.xml` file that tells Sysmon what
-to watch:
+Then Olaf Hartong's `sysmon-modular` configuration — the `.xml` file that tells Sysmon
+what to watch:
 
-![Downloading Olaf Hartong's sysmon-modular configuration](images/36-olaf-sysmon-config-download.png)
+![Olaf Hartong's sysmon-modular configuration on GitHub](images/36-olaf-sysmon-config-download.png)
 
-To apply it, I copied the full path to the XML file, opened PowerShell as
-Administrator, and pasted the path into the command so Sysmon reloads with the new
-config. Copying the path first is just to avoid mistyping a long filename into an
-elevated shell.
+With both in the same folder, a single command from an elevated PowerShell installs
+Sysmon and loads that configuration in one step:
 
-![Applying the Sysmon configuration in an elevated PowerShell](images/37-apply-sysmon-config-powershell.png)
+```powershell
+.\Sysmon64.exe -i ..\sysmonconfig.xml
+```
+
+Sysmon reports the configuration validated and the service installed and started:
+
+![Installing Sysmon with the Olaf Hartong config in an elevated PowerShell](images/37-apply-sysmon-config-powershell.png)
 
 ## Result
 
